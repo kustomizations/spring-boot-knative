@@ -1,0 +1,16 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: helloworld-java-spring
+  namespace: default
+spec:
+  template:
+    spec:
+      containers:
+        - image: docker.io/markpollack/helloworld-java-spring
+          livenessProbe:
+            httpGet:
+              path: /actuator/info
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
