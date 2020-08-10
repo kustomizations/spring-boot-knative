@@ -1,13 +1,13 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: helloworld-java-spring
+  name: function
   namespace: default
 spec:
   template:
     spec:
       containers:
-        - image: docker.io/markpollack/helloworld-java-spring
+        - image: dev.local/function
           livenessProbe:
             httpGet:
               path: /actuator/info
